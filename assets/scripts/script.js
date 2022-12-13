@@ -17,7 +17,7 @@ const decryptHashData = (encrypted) => {
 };
 
 const getWordle = () => {
-    fetch(`${window.location.href}word`)
+    fetch(`${window.location.href}.netlify.app/.netlify/functions/generate-words`)
         .then((response) => response.json())
         .then((response) => {
             worldleList = decryptHashData(response.dados);
