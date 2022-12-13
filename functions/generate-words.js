@@ -13,7 +13,7 @@ exports.handler = async function (event, context) {
     let encrypted = CryptoJS.AES.encrypt(JSON.stringify(words), myPassword).toString();
     return {
         statusCode: 200,
-        body: JSON.stringify({ dados: encrypted })
+        body: JSON.stringify({ dados: encrypted, def: words })
     }
 
 }
