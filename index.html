@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Wordly Clone</title>
     <link rel="icon" type="image/x-icon" sizes="180x180"
-          href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAkFBMVEUAAAD///9qqmTRsDa3t7fR0dFck1cfHx9trmcTHxM/ZTvd3d1Xi1IvLy8NFQwUIhNxcXEvSyyYmJhgYGB4eHgIBwHv7+9PT08yUC9sbGyGhoZZSxdHckO7nTApIwpBOBE4ODinjSsSEhJYWFg3WDRQgExCQkLDw8NuXRwbLBkSEARDX0DIqDQkOyJgm1rm5ubFM6HIAAACkUlEQVR4nO3ca3OiMBQG4MASgQZoVW6yl7JYpJdt+f//boGTgGAhdgeJ7pz3E3ROkkcMzEgJRGsTMmosk4KysBuXiA22iTKyXKIkHBDKhwWH5/HLYwJNlxcQkrKOYKgA1DEEgaoSEEKBwNz2L6Y7HhNKJip4+Kw2x9PN+7RsCL7Y9w3KRlMmUDReIQIz+1DQ0RTGToyZ1ISQ77hUm8wGyqaL6sBHisLJIsoPKmEVgX86k0l6PpuwO4egMW7YaCSMuomxJEGcBPuQMNjaSXuem8DrMkY4xliewK9GlMCGKf0e5idQODcLlQSYkAYSkIAEJCxG2KsnbKV1SLgwIUICEpCABCQgYWaC7Kd9Swh7mZGQbR9kOQAh6mX7SaBn96ipf5Kkyi7rERQGCUg4Ibip5IZmyu+QPT9//zSPbYKmznu5P4kX9NInnH9p+ibNr6ZubenTsRwPCTdKSJCABCTcNCFWSXhVTwj+f0KABCQgoYmPBCQgAQn/SiDXQnhDwmUJv5v8HOTP1wn6gKAwSEDCFRK8pztZ3qFFXufHMMeFcK69SDuMgx7BXlmy3AFBWmfdN3WxtG5wXagIsosZJ8guOLoOhC/fX0ACEpCABCQgAQlIQAISkICEGyR4jqzjCxDgN2Uhlm7lyx+FHDqkhMHDbrGs49kJ+rqpy1i7jM+RNJmbYDnQ3z4k4jEZ+2O6zcwEawWTsV7MqPGlhMR29HPuL0wXdfcX1pM1umPzYct6YSv/Z3TVKndW43mCookKHuj8/WO8wsljMWazsFUrU7FPPHs8/MBNVPBAXSDvqsoBlve2X4WC1I/cXslS7+o4HFQAjhe8V/MhkbeYO0lv2X+NWPTlB9l+M3z5QZ2Q0ULFKyD+At5bqgALAGxRAAAAAElFTkSuQmCC"/>
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAkFBMVEUAAAD///9qqmTRsDa3t7fR0dFck1cfHx9trmcTHxM/ZTvd3d1Xi1IvLy8NFQwUIhNxcXEvSyyYmJhgYGB4eHgIBwHv7+9PT08yUC9sbGyGhoZZSxdHckO7nTApIwpBOBE4ODinjSsSEhJYWFg3WDRQgExCQkLDw8NuXRwbLBkSEARDX0DIqDQkOyJgm1rm5ubFM6HIAAACkUlEQVR4nO3ca3OiMBQG4MASgQZoVW6yl7JYpJdt+f//boGTgGAhdgeJ7pz3E3ROkkcMzEgJRGsTMmosk4KysBuXiA22iTKyXKIkHBDKhwWH5/HLYwJNlxcQkrKOYKgA1DEEgaoSEEKBwNz2L6Y7HhNKJip4+Kw2x9PN+7RsCL7Y9w3KRlMmUDReIQIz+1DQ0RTGToyZ1ISQ77hUm8wGyqaL6sBHisLJIsoPKmEVgX86k0l6PpuwO4egMW7YaCSMuomxJEGcBPuQMNjaSXuem8DrMkY4xliewK9GlMCGKf0e5idQODcLlQSYkAYSkIAEJCxG2KsnbKV1SLgwIUICEpCABCQgYWaC7Kd9Swh7mZGQbR9kOQAh6mX7SaBn96ipf5Kkyi7rERQGCUg4Ibip5IZmyu+QPT9//zSPbYKmznu5P4kX9NInnH9p+ibNr6ZubenTsRwPCTdKSJCABCTcNCFWSXhVTwj+f0KABCQgoYmPBCQgAQn/SiDXQnhDwmUJv5v8HOTP1wn6gKAwSEDCFRK8pztZ3qFFXufHMMeFcK69SDuMgx7BXlmy3AFBWmfdN3WxtG5wXagIsosZJ8guOLoOhC/fX0ACEpCABCQgAQlIQAISkICEGyR4jqzjCxDgN2Uhlm7lyx+FHDqkhMHDbrGs49kJ+rqpy1i7jM+RNJmbYDnQ3z4k4jEZ+2O6zcwEawWTsV7MqPGlhMR29HPuL0wXdfcX1pM1umPzYct6YSv/Z3TVKndW43mCookKHuj8/WO8wsljMWazsFUrU7FPPHs8/MBNVPBAXSDvqsoBlve2X4WC1I/cXslS7+o4HFQAjhe8V/MhkbeYO0lv2X+NWPTlB9l+M3z5QZ2Q0ULFKyD+At5bqgALAGxRAAAAAElFTkSuQmCC" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/styles/style.css">
 </head>
+
 <body>
-<div class="game-container">
-    <div class="title-container">
-        <div class="title">Wordle</div>
-        <div class="again-game"></div>
+    <div class="game-container">
+        <div class="title-container">
+            <div class="title">Wordle</div>
+            <div class="again-game"></div>
+        </div>
+        <div class="message-container"></div>
+        <div class="tile-container"></div>
+        <div class="key-container"></div>
     </div>
-    <div class="message-container"></div>
-    <div class="tile-container"></div>
-    <div class="key-container"></div>
-</div>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
-integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
-crossorigin="anonymous"
-referrerpolicy="no-referrer"
-></script><script  src="./assets/scripts/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./assets/scripts/script.js"></script>
 </body>
+
 </html>

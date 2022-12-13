@@ -12,46 +12,17 @@ const hash = "mSc2xpeKAEWTEMtUDjG7VpugySMAQjZL3nj6aLbJDv5xW3T2eY9BKGsbh6sPrVuwrM
 const decryptHashData = (encrypted) => {
     let decrypted = CryptoJS.AES.decrypt(encrypted, hash);
     let value = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
-    console.log('====================================');
-    console.log(value, "value");
-    console.log('====================================');
     return value;
 };
 
 const getWordle = () => {
-    // axios.get('/.netlify.app/.netlify/functions/generate-words').then(
-    //     res => {
-    //         console.log('====================================');
-    //         console.log(res);
-    //         console.log('====================================');
-    //     }
-    // )
-    //     .catch((error) => {
-    //         console.log('====================================');
-    //         console.log(error);
-    //         console.log('====================================');
-    //     })
   fetch(`${window.location.origin}/.netlify/functions/generate-words`)
     .then((response) => response.json())
         .then((response) => {
-        console.log('====================================');
-        console.log(response, "response");
-        console.log('====================================');
-        let decrypted = CryptoJS.AES.decrypt(response.dados, hash);
-        let value = decrypted.toString(CryptoJS.enc.Utf8);
-        console.log('====================================');
-        console.log("value", value);
-        console.log('====================================');
         worldleList = decryptHashData(response.dados);
-        console.log('====================================');
-        console.log(worldleList, "worldleList");
-        console.log('====================================');
         wordle = worldleList[wordleIndex];
     })
     .catch((error) => {
-        console.log('====================================');
-        console.log("error", error);
-        console.log('====================================');
     });
 };
 
