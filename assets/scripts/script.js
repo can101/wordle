@@ -1,5 +1,3 @@
-// import axios from 'axios'
-import CryptoJS from 'crypto-js'
 const tileDisplay = document.querySelector(".tile-container");
 const keyboard = document.querySelector(".key-container");
 const messageDispaly = document.querySelector(".message-container");
