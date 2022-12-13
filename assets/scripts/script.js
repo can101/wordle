@@ -14,6 +14,9 @@ const hash = "mSc2xpeKAEWTEMtUDjG7VpugySMAQjZL3nj6aLbJDv5xW3T2eY9BKGsbh6sPrVuwrM
 const decryptHashData = (encrypted) => {
     let decrypted = CryptoJS.AES.decrypt(encrypted, hash);
     let value = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+    console.log('====================================');
+    console.log(value);
+    console.log('====================================');
     return value;
 };
 
