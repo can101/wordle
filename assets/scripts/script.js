@@ -31,28 +31,28 @@ const getWordle = () => {
     //         console.log(error);
     //         console.log('====================================');
     //     })
-    console.log('====================================');
-    console.log(window.location.origin);
-    console.log('====================================');
-    fetch(`${window.location.origin}/.netlify/functions/generate-words`)
-        .then((response) => response.json())
+  fetch(`${window.location.origin}/.netlify/functions/generate-words`)
+    .then((response) => response.json())
         .then((response) => {
-            console.log('====================================');
-            console.log(response, "response");
-            console.log('====================================');
-            let decrypted = CryptoJS.AES.decrypt(response.dados, hash);
-            let value = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
-            console.log('====================================');
-            console.log("value", value);
-            console.log('====================================');
-            worldleList = decryptHashData(response.dados);
-            console.log('====================================');
-            console.log(worldleList, "worldleList");
-            console.log('====================================');
-            wordle = worldleList[wordleIndex];
-        })
-        .catch((error) => {
-        });
+        console.log('====================================');
+        console.log(response, "response");
+        console.log('====================================');
+        let decrypted = CryptoJS.AES.decrypt(response.dados, hash);
+        let value = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+        console.log('====================================');
+        console.log("value", value);
+        console.log('====================================');
+        worldleList = decryptHashData(response.dados);
+        console.log('====================================');
+        console.log(worldleList, "worldleList");
+        console.log('====================================');
+        wordle = worldleList[wordleIndex];
+    })
+    .catch((error) => {
+        console.log('====================================');
+        console.log("error", error);
+        console.log('====================================');
+    });
 };
 
 getWordle();
