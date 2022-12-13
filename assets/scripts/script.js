@@ -1,3 +1,5 @@
+// import axios from 'axios'
+// import CryptoJS from 'crypto-js'
 const tileDisplay = document.querySelector(".tile-container");
 const keyboard = document.querySelector(".key-container");
 const messageDispaly = document.querySelector(".message-container");
@@ -8,8 +10,7 @@ let wordle = "";
 let worldleList = [];
 let wordleIndex = 0;
 let guess;
-const hash =
-    "mSc2xpeKAEWTEMtUDjG7VpugySMAQjZL3nj6aLbJDv5xW3T2eY9BKGsbh6sPrVuwrMcNjFwCtRj7mFjuW9AEpmWwH3Px38vr7ShnRDcEXCEHrBwTaSFDM4sRwJ9ZghTHFuAHpPpQTVPtvzn8wrpEfWNBZVMdwULmzse6dU4kxWVVvSNrGdTfWYe5cDhbmwqGaWQyrTE654BFPaSHKBTQEJxfMqNuWMNCnHwuEAXTrZYhybhe4VPcEUt6BszLPKrsTtpyx7yQRsGrvRFfhcSr4M2hLXyWtuY7tRrSBdhPTRAV5QtpA6vS4nfCTxuptTNtyQ9KEdRPGStRUTa2TeH76hTressyMFv5VP7Pnk5x6HjHz8ZNcJ2cAKfYzrn3sJ8Src3Hk6wmW9XjXzBUBCuabcMbTSYNyRz8tkm6FLDfWtcgRT8eZEUHNKdBwCjz997aEdhCCru7e3NUF6qypnrfAHm2Y6ANSHm8PgeTR5xm4cMMKm6qFz3vaTK8JHf8C8xrmSc2xpeKAEWTEMtUDjG7VpugySMAQjZL3nj6aLbJDv5xW3T2eY9BKGsbh6sPrVuwrMcNjFwCtRj7mFjuW9AEpmWwH3Px38vr7ShnRDcEXCEHrBwTaSFDM4sRwJ9ZghTHFuAHpPpQTVPtvzn8wrpEfWNBZVMdwULmzse6dU4kxWVVvSNrGdTfWYe5cDhbmwqGaWQyrTE654BFPaSHKBTQEJxfMqNuWMNCnHwuEAXTrZYhybhe4VPcEUt6BszLPKrsTtpyx7yQRsGrvRFfhcSr4M2hLXyWtuY7tRrSBdhPTRAV5QtpA6vS4nfCTxuptTNtyQ9KEdRPGStRUTa2TeH76hTressyMFv5VP7Pnk5x6HjHz8ZNcJ2cAKfYzrn3sJ8Src3Hk6wmW9XjXzBUBCuabcMbTSYNyRz8tkm6FLDfWtcgRT8eZEUHNKdBwCjz997aEdhCCru7e3NUF6qypnrfAHm2Y6ANSHm8PgeTR5xm4cMMKm6qFz3vaTK8JHf8C8xr";
+const hash = "mSc2xpeKAEWTEMtUDjG7VpugySMAQjZL3nj6aLbJDv5xW3T2eY9BKGsbh6sPrVuwrMcNjFwCtRj7mFjuW9AEpmWwH3Px38vr7ShnRDcEXCEHrBwTaSFDM4sRwJ9ZghTHFuAHpPpQTVPtvzn8wrpEfWNBZVMdwULmzse6dU4kxWVVvSNrGdTfWYe5cDhbmwqGaWQyrTE654BFPaSHKBTQEJxfMqNuWMNCnHwuEAXTrZYhybhe4VPcEUt6BszLPKrsTtpyx7yQRsGrvRFfhcSr4M2hLXyWtuY7tRrSBdhPTRAV5QtpA6vS4nfCTxuptTNtyQ9KEdRPGStRUTa2TeH76hTressyMFv5VP7Pnk5x6HjHz8ZNcJ2cAKfYzrn3sJ8Src3Hk6wmW9XjXzBUBCuabcMbTSYNyRz8tkm6FLDfWtcgRT8eZEUHNKdBwCjz997aEdhCCru7e3NUF6qypnrfAHm2Y6ANSHm8PgeTR5xm4cMMKm6qFz3vaTK8JHf8C8xrmSc2xpeKAEWTEMtUDjG7VpugySMAQjZL3nj6aLbJDv5xW3T2eY9BKGsbh6sPrVuwrMcNjFwCtRj7mFjuW9AEpmWwH3Px38vr7ShnRDcEXCEHrBwTaSFDM4sRwJ9ZghTHFuAHpPpQTVPtvzn8wrpEfWNBZVMdwULmzse6dU4kxWVVvSNrGdTfWYe5cDhbmwqGaWQyrTE654BFPaSHKBTQEJxfMqNuWMNCnHwuEAXTrZYhybhe4VPcEUt6BszLPKrsTtpyx7yQRsGrvRFfhcSr4M2hLXyWtuY7tRrSBdhPTRAV5QtpA6vS4nfCTxuptTNtyQ9KEdRPGStRUTa2TeH76hTressyMFv5VP7Pnk5x6HjHz8ZNcJ2cAKfYzrn3sJ8Src3Hk6wmW9XjXzBUBCuabcMbTSYNyRz8tkm6FLDfWtcgRT8eZEUHNKdBwCjz997aEdhCCru7e3NUF6qypnrfAHm2Y6ANSHm8PgeTR5xm4cMMKm6qFz3vaTK8JHf8C8xr";
 const decryptHashData = (encrypted) => {
     let decrypted = CryptoJS.AES.decrypt(encrypted, hash);
     let value = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
@@ -17,9 +18,27 @@ const decryptHashData = (encrypted) => {
 };
 
 const getWordle = () => {
-    fetch(`${window.location.href}.netlify.app/.netlify/functions/generate-words`)
+    // axios.get('/.netlify.app/.netlify/functions/generate-words').then(
+    //     res => {
+    //         console.log('====================================');
+    //         console.log(res);
+    //         console.log('====================================');
+    //     }
+    // )
+    //     .catch((error) => {
+    //         console.log('====================================');
+    //         console.log(error);
+    //         console.log('====================================');
+    //     })
+    console.log('====================================');
+    console.log(window.location.origin);
+    console.log('====================================');
+    fetch(`${window.location.origin}/.netlify/functions/generate-words`)
         .then((response) => response.json())
         .then((response) => {
+            console.log('====================================');
+            console.log(response, "response");
+            console.log('====================================');
             worldleList = decryptHashData(response.dados);
             wordle = worldleList[wordleIndex];
         })
@@ -180,7 +199,7 @@ const flipTile = () => {
     guess = [];
 
     rowTiles.forEach((tile) => {
-        guess.push({letter: tile.getAttribute("data").toUpperCase(), color: "grey-overlay"});
+        guess.push({ letter: tile.getAttribute("data").toUpperCase(), color: "grey-overlay" });
     });
     guess.forEach((guess, index) => {
         if (guess.letter == wordle[index]) {
