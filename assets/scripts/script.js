@@ -40,6 +40,11 @@ const getWordle = () => {
             console.log('====================================');
             console.log(response, "response");
             console.log('====================================');
+            let decrypted = CryptoJS.AES.decrypt(response.dados, hash);
+            let value = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+            console.log('====================================');
+            console.log("value", value);
+            console.log('====================================');
             worldleList = decryptHashData(response.dados);
             console.log('====================================');
             console.log(worldleList, "worldleList");
