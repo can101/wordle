@@ -15,7 +15,7 @@ const decryptHashData = (encrypted) => {
     let decrypted = CryptoJS.AES.decrypt(encrypted, hash);
     let value = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
     console.log('====================================');
-    console.log(value);
+    console.log(value, "value");
     console.log('====================================');
     return value;
 };
@@ -43,6 +43,9 @@ const getWordle = () => {
             console.log(response, "response");
             console.log('====================================');
             worldleList = decryptHashData(response.dados);
+            console.log('====================================');
+            console.log(worldleList, "worldleList");
+            console.log('====================================');
             wordle = worldleList[wordleIndex];
         })
         .catch((error) => {
